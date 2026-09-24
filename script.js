@@ -1,148 +1,120 @@
-const startScreen =
-    document.getElementById("startScreen");
-
-const questScreen =
-    document.getElementById("questScreen");
-
-const dialogueScreen =
-    document.getElementById("dialogueScreen");
-
-const giftScreen =
-    document.getElementById("giftScreen");
-
-const messageScreen =
-    document.getElementById("messageScreen");
-
-
-const startButton =
-    document.getElementById("startButton");
-
-const questButton =
-    document.getElementById("questButton");
-
-const nextDialogue =
-    document.getElementById("nextDialogue");
-
-const gift =
-    document.getElementById("gift");
+const screens =
+    document.querySelectorAll(".screen");
 
 const dialogueText =
     document.getElementById("dialogueText");
 
+const nextBtn =
+    document.getElementById("nextBtn");
+
 
 /* =========================
-   تغيير الشاشة
+   تغيير الصفحات
 ========================= */
 
-function showScreen(screen) {
+function go(id) {
 
-    document.querySelectorAll(".screen")
-        .forEach(item => {
-            item.classList.remove("active");
-        });
+    screens.forEach(screen => {
+
+        screen.classList.remove("active");
+
+    });
 
     setTimeout(() => {
-        screen.classList.add("active");
-    }, 100);
 
+        document
+            .getElementById(id)
+            .classList.add("active");
+
+    }, 80);
 }
-
-
-/* =========================
-   البداية
-========================= */
-
-startButton.addEventListener("click", () => {
-
-    showScreen(questScreen);
-
-});
-
-
-/* =========================
-   قبول المهمة
-========================= */
-
-questButton.addEventListener("click", () => {
-
-    showScreen(dialogueScreen);
-
-    currentDialogue = 0;
-
-    dialogueText.textContent =
-        dialogues[currentDialogue];
-
-});
 
 
 /* =========================
    الحوار
 ========================= */
 
-const dialogues = [
+const lines = [
 
-    "يبدو أن هناك شيئًا مختلفًا اليوم...",
+    "يبدو أن شيئًا مختلفًا يحدث الليلة...",
 
-    "النجوم أكثر لمعانًا من المعتاد، وكأنها تحتفل بشيء ما.",
+    "السماء هادئة، لكن هناك ضوءًا غريبًا بين ظلال القمر.",
 
-    "انتظري... وجدتها.",
+    "انتظري... لقد ظهرت مهمة جديدة.",
 
-    "اليوم ليس يومًا عاديًا.",
+    "اسم المهمة: يوم ميلاد Mido.",
 
-    "إنه يوم ميلاد Mido. ✦",
+    "لا توجد معارك هذه المرة، ولا طريق يجب قطعه.",
 
-    "وهذا يعني أن لدينا مهمة خاصة يجب إكمالها.",
+    "مهمتنا الوحيدة هي أن نجعل هذا اليوم ذكرى جميلة. ✦",
 
-    "لكن هذه المرة... المكافأة ليست Primogems.",
-
-    "إنها شيء صُمم خصيصًا لكِ. ♡"
+    "والآن... حان وقت استلام المكافأة."
 
 ];
 
-let currentDialogue = 0;
+
+let index = 0;
 
 
-nextDialogue.addEventListener("click", () => {
+function startDialogue() {
 
-    currentDialogue++;
+    index = 0;
 
-    if (currentDialogue < dialogues.length) {
+    dialogueText.textContent =
+        lines[index];
 
-        dialogueText.style.opacity = 0;
+    nextBtn.textContent =
+        "التالي";
+
+    go("dialogue");
+}
+
+
+function nextDialogue() {
+
+    index++;
+
+    if (index < lines.length) {
+
+        dialogueText.style.opacity = "0";
 
         setTimeout(() => {
 
             dialogueText.textContent =
-                dialogues[currentDialogue];
+                lines[index];
 
-            dialogueText.style.opacity = 1;
+            dialogueText.style.opacity = "1";
 
-        }, 250);
-
-    } else {
-
-        showScreen(giftScreen);
+        }, 180);
 
     }
 
-});
+    else {
+
+        go("gift");
+
+    }
+}
 
 
 /* =========================
    فتح الهدية
 ========================= */
 
-gift.addEventListener("click", () => {
+function openGift() {
 
-    gift.style.animation = "none";
+    const gift =
+        document.querySelector(".gift");
+
+    gift.style.animation =
+        "none";
 
     gift.style.transform =
-        "scale(1.15)";
+        "scale(1.2)";
 
     setTimeout(() => {
 
-        showScreen(messageScreen);
+        go("letter");
 
-    }, 800);
-
-});
+    }, 650);
+}
