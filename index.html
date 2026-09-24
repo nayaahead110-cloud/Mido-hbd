@@ -4,271 +4,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>For Mido ✦</title>
+    <title>Mido | Birthday Quest</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- خلفية -->
-    <div class="background">
-        <div class="stars"></div>
-        <div class="moon"></div>
-    </div>
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="lightning"></div>
 
-    <!-- =========================
-         شاشة البداية
-    ========================== -->
+    <main>
 
-    <section id="startScreen" class="screen active">
+        <!-- البداية -->
+        <section id="start" class="screen active">
 
-        <div class="game-logo">
-            <span>✦</span>
-            <h1>MIDO</h1>
-            <p>A Special Journey</p>
-        </div>
+            <div class="sigil">✦</div>
 
-        <div class="start-box">
-
-            <p class="small-text">
-                A new adventure awaits...
+            <p class="eyebrow">
+                SPECIAL QUEST
             </p>
 
-            <h2>
-                هل أنتِ مستعدة لبدء الرحلة؟
-            </h2>
+            <h1>MIDO</h1>
 
-            <button id="startButton">
-                <span>✦</span>
-                ابدئي الرحلة
-                <span>✦</span>
+            <p class="subtitle">
+                A Birthday Beneath the Moonlight
+            </p>
+
+            <div class="line"></div>
+
+            <p class="intro">
+                تحت ضوء القمر، ظهرت مهمة جديدة...
+            </p>
+
+            <button onclick="go('quest')">
+                بدء الرحلة ✦
             </button>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- =========================
-         شاشة الـ Quest
-    ========================== -->
+        <!-- المهمة -->
+        <section id="quest" class="screen">
 
-    <section id="questScreen" class="screen">
+            <div class="quest-card">
 
-        <div class="quest-window">
-
-            <div class="quest-header">
-                <span>✦ NEW QUEST</span>
-            </div>
-
-            <div class="quest-content">
-
-                <p class="quest-type">
-                    مهمة خاصة
+                <p class="eyebrow">
+                    ✦ QUEST AVAILABLE ✦
                 </p>
 
-                <h1>
+                <h2>
                     A New Chapter Begins
-                </h1>
-
-                <div class="divider"></div>
+                </h2>
 
                 <p>
-                    يبدو أن هناك حدثًا استثنائيًا
-                    ظهر في هذا العالم...
+                    وصلت رسالة من أرض بعيدة،
+                    تحمل اسمًا واحدًا:
                 </p>
 
-                <p>
-                    <strong>لقد حان يوم ميلاد Mido.</strong>
-                </p>
+                <strong>
+                    Mido
+                </strong>
 
                 <div class="objective">
 
-                    <span class="objective-title">
-                        ✦ الهدف
+                    <span>
+                        OBJECTIVE
                     </span>
 
                     <p>
-                        احتفل بـ Mido 🎂
+                        احتفل بيوم ميلاد Mido 🎂
                     </p>
 
                 </div>
 
-                <button id="questButton">
+                <p class="muted">
+                    المكافأة: ذكرى تستحق أن تبقى.
+                </p>
+
+                <button onclick="startDialogue()">
                     قبول المهمة
                 </button>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- =========================
-         شاشة الحوار
-    ========================== -->
+        <!-- الحوار -->
+        <section id="dialogue" class="screen">
 
-    <section id="dialogueScreen" class="screen">
-
-        <div class="dialogue-character">
-            ✦
-        </div>
-
-        <div class="dialogue-box">
-
-            <div class="dialogue-name">
-                Traveler
+            <div class="dialogue-symbol">
+                ⚡
             </div>
 
-            <p id="dialogueText"></p>
+            <div class="dialogue-box">
 
-            <button id="nextDialogue">
-                التالي
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         شاشة الهدية
-    ========================== -->
-
-    <section id="giftScreen" class="screen">
-
-        <div class="gift-container">
-
-            <div class="gift-glow"></div>
-
-            <div id="gift" class="gift">
-
-                <div class="gift-lid"></div>
-
-                <div class="gift-box">
-
-                    <div class="ribbon vertical"></div>
-                    <div class="ribbon horizontal"></div>
-
+                <div class="speaker">
+                    Traveler
                 </div>
 
+                <p id="dialogueText"></p>
+
+                <button id="nextBtn" onclick="nextDialogue()">
+                    التالي
+                </button>
+
             </div>
 
-            <p class="gift-hint">
+        </section>
+
+
+        <!-- الهدية -->
+        <section id="gift" class="screen">
+
+            <p class="eyebrow">
+                QUEST REWARD
+            </p>
+
+            <h2>
+                هناك شيء ينتظرك...
+            </h2>
+
+            <div class="gift" onclick="openGift()">
+
+                <div class="lid"></div>
+
+                <div class="box"></div>
+
+                <div class="ribbon v"></div>
+
+                <div class="ribbon h"></div>
+
+            </div>
+
+            <p class="hint">
                 اضغطي على الهدية
             </p>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- =========================
-         الرسالة
-    ========================== -->
+        <!-- الرسالة -->
+        <section id="letter" class="screen">
 
-    <section id="messageScreen" class="screen">
+            <article class="letter">
 
-        <div class="letter">
+                <div class="quest-complete">
+                    ✦ QUEST COMPLETE ✦
+                </div>
 
-            <div class="letter-top">
-                ✦ QUEST COMPLETE ✦
-            </div>
-
-            <div class="letter-content">
-
-                <h1>
+                <h2>
                     Dear Mido
-                </h1>
+                </h2>
 
                 <p>
-                    في يومٍ عادي من أيام رحلتنا عبر هذا العالم،
+                    في يومٍ عادي من أيام الرحلة،
                     ظهر إشعار جديد لم يكن موجودًا من قبل...
                 </p>
 
-                <p class="highlight">
+                <p class="gold">
                     لقد حان يوم ميلاد Mido.
                 </p>
 
                 <p>
-                    وكأن العالم قرر أن يتوقف للحظة،
-                    فلا معارك، ولا مهام، ولا رحلة طويلة
-                    تنتظرنا الآن.
+                    وكأن العالم قرر أن يتوقف للحظة؛
+                    لا معارك، ولا مهام،
+                    ولا طريق طويل ينتظرنا.
                 </p>
 
                 <p>
-                    اليوم فقط، توجد مهمة واحدة تستحق أن نكملها.
+                    اليوم توجد مهمة واحدة فقط
+                    تستحق أن نكملها:
+                    <b>الاحتفال بكِ.</b>
                 </p>
 
-                <div class="mission-card">
+                <div class="reward">
 
-                    <span>✦ OBJECTIVE</span>
+                    <span>
+                        ✦ OBJECTIVE
+                    </span>
 
                     <p>
-                        احتفل بـ Mido 🎂
+                        اجعلي هذا اليوم ذكرى جميلة.
                     </p>
 
-                    <span>✦ REWARD</span>
+                    <span>
+                        ✦ REWARD
+                    </span>
 
                     <p>
-                        ذكريات جديدة + يوم سعيد
+                        سنة جديدة مليئة بالأيام
+                        التي تستحق أن تُعاش.
                     </p>
 
                 </div>
 
                 <p>
-                    Mido، يمكن أن تتغير المناطق،
-                    وتتغير الرحلات،
-                    ونقابل أشخاصًا كثيرين في الطريق...
+                    ميدو، أتمنى أن تكون سنتك الجديدة
+                    فصلًا أجمل من كل الفصول السابقة،
+                    وأن تجدي في طريقك أشياء تجعل قلبك سعيدًا،
+                    وذكريات تبتسمين كلما تذكرتيها.
                 </p>
 
                 <p>
-                    لكن بعض الأشخاص يكون وجودهم
-                    في الرحلة بحد ذاته مكافأة.
+                    ولو كانت الحياة رحلة طويلة بين مناطق
+                    لا نعرفها، أتمنى أن تظلي دائمًا قادرة
+                    على الوصول إلى الأماكن التي تشبهك،
+                    والأشخاص الذين يجعلون الرحلة أخف.
                 </p>
 
-                <p class="highlight">
-                    وأنتِ واحدة منهم. ♡
+                <p class="gold center">
+                    كل عام وأنتِ بخير يا Mido. ♡
                 </p>
 
-                <p>
-                    أتمنى أن تكون سنتك الجديدة مليئة
-                    بالأشياء اللي تحبينها،
-                    وأن كل طريق تمشينه يوصلك
-                    لشيء أجمل مما توقعتِ.
-                </p>
+                <div class="final">
 
-                <p>
-                    وإذا كانت الحياة مثل رحلة الـ Traveler،
-                    فأتمنى أن يكون هذا الفصل من قصتك
-                    من أجمل الفصول اللي عشتِها.
-                </p>
+                    <div>
+                        ⚡ ✦ 🌙 ✦ ⚡
+                    </div>
 
-                <div class="final-message">
-
-                    <span>✦</span>
-
-                    <h2>
+                    <h3>
                         Happy Birthday, Mido
-                    </h2>
+                    </h3>
 
                     <p>
-                        May your journey always lead you
-                        somewhere worth remembering.
+                        May your next chapter be worth remembering.
                     </p>
-
-                    <span>✦</span>
 
                 </div>
 
-            </div>
+            </article>
 
-        </div>
+        </section>
 
-    </section>
-
+    </main>
 
     <script src="script.js"></script>
 
