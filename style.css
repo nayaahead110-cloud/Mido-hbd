@@ -1,0 +1,660 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family: "Noto Sans Arabic", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #31496b 0%,
+            #17243a 35%,
+            #080d18 75%,
+            #04070d 100%
+        );
+
+    color: #fff;
+}
+
+
+/* =========================
+   الخلفية
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.moon {
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    top: 8%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #d9e6f3 45%,
+            #9fb4ca 100%
+        );
+
+    opacity: .16;
+
+    filter: blur(1px);
+
+    box-shadow:
+        0 0 80px rgba(190, 220, 255, .25);
+}
+
+.stars,
+.stars::before,
+.stars::after {
+    position: absolute;
+    inset: 0;
+
+    content: "";
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px);
+
+    background-size:
+        90px 90px;
+
+    opacity: .35;
+}
+
+.stars::before {
+    background-size: 140px 140px;
+    opacity: .2;
+}
+
+.stars::after {
+    background-size: 200px 200px;
+    opacity: .15;
+}
+
+
+/* =========================
+   الشاشات
+========================= */
+
+.screen {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease,
+        visibility .7s;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* =========================
+   البداية
+========================= */
+
+.game-logo {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.game-logo span {
+    font-size: 30px;
+    color: #e6c979;
+}
+
+.game-logo h1 {
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(45px, 12vw, 90px);
+
+    letter-spacing: 12px;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,.25);
+}
+
+.game-logo p {
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 4px;
+
+    opacity: .65;
+}
+
+.start-box {
+    position: absolute;
+
+    bottom: 11%;
+
+    text-align: center;
+}
+
+.small-text {
+    opacity: .6;
+    margin-bottom: 12px;
+}
+
+.start-box h2 {
+    font-size: 19px;
+    font-weight: 400;
+
+    margin-bottom: 25px;
+}
+
+button {
+    border: none;
+
+    padding: 13px 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8d18b,
+            #b58d40
+        );
+
+    color: #15120b;
+
+    font-family: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.35);
+
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 30px rgba(255,220,140,.25);
+}
+
+
+/* =========================
+   Quest
+========================= */
+
+.quest-window {
+    width: min(620px, 95vw);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(26,40,60,.97),
+            rgba(9,15,26,.98)
+        );
+
+    border:
+        1px solid rgba(220,200,150,.45);
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.6);
+
+    position: relative;
+}
+
+.quest-header {
+    padding: 14px 20px;
+
+    background: rgba(0,0,0,.25);
+
+    border-bottom:
+        1px solid rgba(220,200,150,.2);
+
+    color: #e7cf91;
+
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 2px;
+}
+
+.quest-content {
+    padding: 45px 35px;
+
+    text-align: center;
+}
+
+.quest-type {
+    color: #d9c27f;
+
+    font-size: 13px;
+
+    margin-bottom: 12px;
+}
+
+.quest-content h1 {
+    font-family: "Cinzel", serif;
+
+    font-size: 28px;
+
+    font-weight: 500;
+}
+
+.divider {
+    width: 100px;
+    height: 1px;
+
+    background: #d8c27e;
+
+    margin: 25px auto;
+}
+
+.quest-content p {
+    line-height: 2;
+
+    color: #d8dee8;
+}
+
+.objective {
+    margin: 30px 0;
+
+    padding: 18px;
+
+    background: rgba(255,255,255,.035);
+
+    border-right:
+        3px solid #d9c27d;
+}
+
+.objective-title {
+    color: #e2c979;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   Dialogue
+========================= */
+
+.dialogue-character {
+    position: absolute;
+
+    top: 20%;
+
+    font-size: 70px;
+
+    color: #d9c47f;
+
+    text-shadow:
+        0 0 30px rgba(230,205,130,.4);
+
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+.dialogue-box {
+    position: absolute;
+
+    bottom: 7%;
+
+    width: min(900px, 92vw);
+
+    padding: 28px 32px;
+
+    background:
+        linear-gradient(
+            rgba(10,18,30,.95),
+            rgba(7,12,21,.95)
+        );
+
+    border:
+        1px solid rgba(220,200,150,.4);
+
+    box-shadow:
+        0 10px 50px rgba(0,0,0,.6);
+}
+
+.dialogue-name {
+    color: #e5ca82;
+
+    font-family: "Cinzel", serif;
+
+    margin-bottom: 12px;
+}
+
+.dialogue-box p {
+    min-height: 65px;
+
+    line-height: 2;
+
+    color: #e7eaf0;
+}
+
+
+/* =========================
+   الهدية
+========================= */
+
+.gift-container {
+    text-align: center;
+}
+
+.gift {
+    position: relative;
+
+    width: 150px;
+    height: 150px;
+
+    margin: auto;
+
+    cursor: pointer;
+
+    animation:
+        giftFloat 2s ease-in-out infinite;
+}
+
+@keyframes giftFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+.gift-box {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 150px;
+    height: 100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #273d5d,
+            #15243b
+        );
+
+    border:
+        2px solid #d7bd76;
+}
+
+.gift-lid {
+    position: absolute;
+
+    top: 35px;
+
+    left: -8px;
+
+    width: 166px;
+    height: 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #334d70,
+            #1b2c48
+        );
+
+    border:
+        2px solid #d7bd76;
+
+    z-index: 2;
+}
+
+.ribbon {
+    position: absolute;
+
+    background: #d6bd70;
+
+    z-index: 3;
+}
+
+.ribbon.vertical {
+    width: 20px;
+    height: 100%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+.ribbon.horizontal {
+    height: 18px;
+    width: 100%;
+
+    top: 45px;
+}
+
+.gift-hint {
+    margin-top: 30px;
+
+    color: #d7c994;
+
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+
+    50% {
+        opacity: .4;
+    }
+
+}
+
+
+/* =========================
+   الرسالة
+========================= */
+
+.letter {
+    width: min(720px, 94vw);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #182638,
+            #0c1522
+        );
+
+    border:
+        1px solid rgba(225,205,145,.45);
+
+    box-shadow:
+        0 20px 100px rgba(0,0,0,.7);
+}
+
+.letter-top {
+    padding: 16px;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 3px;
+
+    color: #e5ca82;
+
+    background: rgba(0,0,0,.2);
+
+    border-bottom:
+        1px solid rgba(225,205,145,.2);
+}
+
+.letter-content {
+    padding: 40px;
+}
+
+.letter-content h1 {
+    font-family: "Cinzel", serif;
+
+    text-align: center;
+
+    font-size: 38px;
+
+    color: #ead28b;
+
+    margin-bottom: 35px;
+}
+
+.letter-content p {
+    color: #dce2eb;
+
+    line-height: 2.1;
+
+    margin-bottom: 22px;
+
+    font-size: 15px;
+}
+
+.highlight {
+    color: #ecd38a !important;
+
+    text-align: center;
+
+    font-weight: 600;
+}
+
+.mission-card {
+    margin: 30px 0;
+
+    padding: 22px;
+
+    background: rgba(255,255,255,.035);
+
+    border:
+        1px solid rgba(220,200,150,.2);
+
+    text-align: center;
+}
+
+.mission-card span {
+    color: #d8bf78;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 12px;
+}
+
+.mission-card p {
+    margin: 7px 0 18px;
+}
+
+.final-message {
+    text-align: center;
+
+    margin-top: 40px;
+
+    padding-top: 30px;
+
+    border-top:
+        1px solid rgba(220,200,150,.25);
+}
+
+.final-message span {
+    color: #e5c978;
+}
+
+.final-message h2 {
+    font-family: "Cinzel", serif;
+
+    color: #ead18a;
+
+    margin: 15px 0;
+}
+
+.final-message p {
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    opacity: .7;
+}
+
+
+/* =========================
+   الجوال
+========================= */
+
+@media (max-width: 600px) {
+
+    .game-logo h1 {
+        letter-spacing: 7px;
+    }
+
+    .quest-content {
+        padding: 30px 22px;
+    }
+
+    .quest-content h1 {
+        font-size: 22px;
+    }
+
+    .dialogue-box {
+        bottom: 4%;
+        padding: 22px;
+    }
+
+    .letter-content {
+        padding: 25px 20px;
+    }
+
+    .letter-content h1 {
+        font-size: 30px;
+    }
+
+}
